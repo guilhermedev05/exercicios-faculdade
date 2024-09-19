@@ -1,0 +1,10 @@
+table{
+    margin: auto;
+}
+
+td:nth-child(even){
+    background-color: #00ff1d;
+}
+td:nth-child(odd){
+    background-color: yellow;
+}
