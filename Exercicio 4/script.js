@@ -1,73 +1,62 @@
-const visor = document.querySelector('.visor-input')
-let calculo = []
-let operadores = []
-let numeros = []
+const visor = document.querySelector('.visor-input');
+let numeroAtual = '';
+let numeroAntigo = '';
+let operadorAtual = '';
+
 document.querySelectorAll('.calc-botao').forEach(item => {
-    
     item.addEventListener('click', () => {
-        if(item.innerHTML.toLowerCase() != 'c'){
-            if(item.innerHTML != '.'){
-                visor.value += Number(item.innerHTML)
-                calculo.push(Number(item.innerHTML)) 
-            }else{
-                visor.value += item.innerHTML
-                let ultimoNumero = calculo[calculo.length - 1]
-                calculo.pop()
-                calculo.push(ultimoNumero + item.innerHTML)
+        if (item.innerHTML.toLowerCase() !== 'c') {
+            if (item.innerHTML !== '.' || !numeroAtual.includes('.')) {
+                visor.value += item.innerHTML;
+                numeroAtual += item.innerHTML;
             }
-        }else{
-            calculo = []
-            numeros = []
-            visor.value = ''
+        } else {
+            numeroAtual = '';
+            numeroAntigo = '';
+            operadorAtual = '';
+            visor.value = '';
         }
-        console.log(calculo)
-    })
-})
+    });
+});
 
 document.querySelectorAll('.calc-botao-op').forEach(item => {
     item.addEventListener('click', () => {
-        visor.value += item.innerHTML 
-        calculo.push(item.innerHTML)
-    })
-})
+        if (numeroAtual && numeroAntigo) {
+            numeroAtual = calcular(numeroAntigo, numeroAtual, operadorAtual);
+        }
+        console.log(numeroAntigo)
+        operadorAtual = item.innerHTML;
+        numeroAntigo = numeroAtual;
+        console.log(numeroAntigo)
+        numeroAtual = '';
+        visor.value += ` ${operadorAtual} `;
+    });
+});
 
 document.querySelector('.calc-botao-res').addEventListener('click', () => {
-    operadores = calculo.map(item => {
-        return typeof(item) == 'number' ? '' : calculo.indexOf(item)
-    })
-    operadores = operadores.filter(item => {
-        return typeof(item) == 'number' ? item : ''
-    })
-    for(let i in operadores){
-        numeros.push(Number(calculo.slice(0,operadores[i]).join('')))
-        numeros.push(Number(calculo.slice(operadores[i] + 1, calculo.length).join('')))
-        console.log(operadores)
+    if (numeroAtual && numeroAntigo && operadorAtual) {
+        numeroAtual = calcular(numeroAntigo, numeroAtual, operadorAtual);
+        visor.value = numeroAtual;
+        numeroAntigo = '';
+        operadorAtual = '';
     }
-    visor.value = ''
-    visor.value = calcular(numeros[0], numeros[1])
-    calculo = []
-    numeros = []
-    calculo.push(Number(visor.value))
-})
+});
 
-function calcular(x,y){
-    if(operadores.length > 1){
-        let resultado = 0
-        for(let i of operadores){
-            if(calculo[i] == '+'){
-                console.log('entrou')
-                resultado += x + y
-            }
-        }
-        return resultado
-    }
-    if(calculo[operadores[0]] == '+'){
-        return x+y
-    }else if(calculo[operadores[0]] == '-'){
-        return x-y
-    }else if(calculo[operadores[0]] == 'x'){
-        return x*y
-    }else if(calculo[operadores[0]] == '÷'){
-        return x/y
+// Função para realizar os cálculos
+function calcular(num1, num2, op) {
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
+    
+    switch (op) {
+        case '+':
+            return (num1 + num2).toString();
+        case 'x':
+            return (num1 * num2).toString();
+        case '-':
+            return (num1 - num2).toString();
+        case '÷':
+            return (num1 / num2).toString();
+        default:
+            return num2;
     }
 }
