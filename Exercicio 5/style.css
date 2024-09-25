@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.seletores {
+    display: flex;
+    gap: 5px;
+}
+
+.seletor {
+    background-color: #b1e512;
+    padding: 5px 20px;
+    border-radius: 10px 10px 0px 0px;
+    cursor: pointer;
+}
+
+.area {
+    background-color: #ffcc33;
+    min-height: 100px;
+    padding: 20px;
+    font-weight: 700;
+}
+
+.area img {
+    width: 60px;
+    height: 60px;
+}
+
+.slide-show{
+    display: none;
+}

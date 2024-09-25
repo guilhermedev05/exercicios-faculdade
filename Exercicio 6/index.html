@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 6</title>
+</head>
+<body>
+    <main>
+        <form>
+            <label for="name">Nome</label>
+            <input id="name" type="text" placeholder="Digite o nome do aluno">
+            <label for="rgm">Rgm</label>
+            <input id="rgm" type="text" placeholder="Digite o rgm do aluno">
+            <label for="nota-parcial">Nota parcial</label>
+            <input id="nota-parcial" type="text" placeholder="Digite a nota entre 0 e 2,5">
+            <label for="nota-projetos">Nota projetos</label>
+            <input id="nota-projetos" type="text" placeholder="Digite a nota entre 0 e 2,0">
+            <label for="nota-exercicios">Nota exercícios</label>
+            <input id="nota-exercicios" type="text" placeholder="Digite a nota entre 0 e 0,5">
+            <label for="nota-regimental">Nota regimental</label>
+            <input id="nota-regimental" type="text" placeholder="Digite a nota entre 0 e 5">
+            <div class="botoes">
+                <button type="button" id="cadastro">Cadastrar</button>
+                <button type="button" id="mostrar-dados">Mostrar dados</button>
+            </div>
+        </form>
+        <div class="dados">
+            <table>
+                <thead>
+                    <th>Aluno</th>
+                    <th>RGM</th>
+                    <th>Nota final</th>
+                    <th>Conceito</th>
+                </thead>
+                <tbody class="corpo-tabela">
+                    
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

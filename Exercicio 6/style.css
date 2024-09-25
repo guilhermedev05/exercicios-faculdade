@@ -1,0 +1,53 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.dados {
+    display: none;
+    opacity: 0;
+    transition: all ease 0.3s;
+}
+
+table{
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px 10px 0 0;
+}
+
+thead th{
+    background-color: rgb(0, 38, 255);
+    color: yellow;
+    font-weight: bold;
+    font-family: sans-serif;
+    padding: 5px 10px;
+}
+
+thead th:first-child{
+    border-radius: 10px 0px 0px 0px;
+}
+
+thead th:last-child{
+    border-radius: 0px 10px 0px 0px;
+}
+tbody td{
+    padding: 5px 10px;
+    text-align: center;
+}
+
+tbody tr:nth-child(odd){
+    background-color: white;
+}
+tbody tr:nth-child(even){
+    background-color: rgb(225, 225, 225);
+}
